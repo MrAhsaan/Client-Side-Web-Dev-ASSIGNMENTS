@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Q11 - Images, Hyperlinks &amp; Table Attributes</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>/* Shared responsive defaults for a clean, accessible lab submission. */
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    color: #172033;
+    background: #f8fafc;
+}
+* { box-sizing: border-box; }
+body {
+    margin: clamp(1rem, 3vw, 2rem) auto;
+    padding: 0 clamp(.25rem, 1vw, .75rem);
+    max-width: 1100px;
+    background: #f8fafc;
+}
+h1, h2, h3, h4 { line-height: 1.25; color: #14213d; }
+h1 { margin-block: .5em .75em; }
+h2 { margin-block: .75em; }
+p { max-width: 78ch; }
+a { color: #1557a6; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+table {
+    width: auto;
+    max-width: 100%;
+    margin-block: 1rem;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    padding: .55rem .75rem;
+    border: 1px solid #94a3b8;
+    vertical-align: middle;
+}
+th { background: #eaf1fb; font-weight: 650; }
+caption { padding: .5rem; font-weight: 650; text-align: left; }
+img, video, iframe, canvas { max-width: 100%; }
+img { height: auto; }
+input, select, textarea, button { max-width: 100%; font: inherit; }
+input, select, textarea { padding: .35rem .5rem; }
+button, input[type="submit"], input[type="reset"] {
+    padding: .4rem .75rem;
+    border: 1px solid #64748b;
+    border-radius: .35rem;
+    background: #eff6ff;
+    color: #172033;
+    cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover { background: #dbeafe; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+fieldset { margin-block: .75rem; padding: .8rem; border: 1px solid #94a3b8; border-radius: .4rem; }
+legend { padding-inline: .35rem; font-weight: 650; }
+.q-box { background: #fff; }
+.grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.card { border: 1px solid #cbd5e1; border-radius: .5rem; padding: 10px; width: 125px; background: #fff; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    iframe { width: 100%; }
+}</style></head>
+<body>
+<h2>Images Inside Table Cells, Hyperlink Cells &amp; All Table Attributes</h2>
+<!-- Demonstrating border, cellpadding, cellspacing, width, align, bgcolor, caption, thead, tbody, tfoot -->
+<table style="background-color: #f8fafc; margin-left: auto; margin-right: auto; width: 75%; max-width: 100%;">
+<caption><b>Table 1: Product Showcase with Images and Links</b></caption>
+<thead>
+<tr style="background-color: #cbd5e0;">
+<th>Product Preview (Image in Cell)</th>
+<th>Product Name</th>
+<th>Documentation (Hyperlink Cell)</th>
+</tr>
+</thead>
+<tbody style="text-align: center;">
+<tr>
+<td>
+<img alt="HTML5 Icon" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='80' height='50'&gt;&lt;rect width='80' height='50' fill='%233182ce'/&gt;&lt;text x='50%' y='50%' fill='white' font-size='12' text-anchor='middle' dy='.3em'&gt;HTML5&lt;/text&gt;&lt;/svg&gt;"/>
+</td>
+<td>HTML5 Reference Guide</td>
+<td><a href="https://html.spec.whatwg.org/" rel="noopener noreferrer" target="_blank">Open Specification</a></td>
+</tr>
+<tr>
+<td>
+<img alt="CSS3 Icon" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='80' height='50'&gt;&lt;rect width='80' height='50' fill='%2338a169'/&gt;&lt;text x='50%' y='50%' fill='white' font-size='12' text-anchor='middle' dy='.3em'&gt;CSS3&lt;/text&gt;&lt;/svg&gt;"/>
+</td>
+<td>CSS3 Layout Guide</td>
+<td><a href="https://www.w3.org/Style/CSS/" rel="noopener noreferrer" target="_blank">Open W3C CSS</a></td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #edf2f7;">
+<td colspan="3" style="text-align: center;"><i>End of Product Table</i></td>
+</tr>
+</tfoot>
+</table>
+</body>
+</html>

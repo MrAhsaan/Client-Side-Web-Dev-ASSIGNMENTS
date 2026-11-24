@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Task 6 - Images &amp; Gallery</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>/* Shared responsive defaults for a clean, accessible lab submission. */
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    color: #172033;
+    background: #f8fafc;
+}
+* { box-sizing: border-box; }
+body {
+    margin: clamp(1rem, 3vw, 2rem) auto;
+    padding: 0 clamp(.25rem, 1vw, .75rem);
+    max-width: 1100px;
+    background: #f8fafc;
+}
+h1, h2, h3, h4 { line-height: 1.25; color: #14213d; }
+h1 { margin-block: .5em .75em; }
+h2 { margin-block: .75em; }
+p { max-width: 78ch; }
+a { color: #1557a6; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+table {
+    width: auto;
+    max-width: 100%;
+    margin-block: 1rem;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    padding: .55rem .75rem;
+    border: 1px solid #94a3b8;
+    vertical-align: middle;
+}
+th { background: #eaf1fb; font-weight: 650; }
+caption { padding: .5rem; font-weight: 650; text-align: left; }
+img, video, iframe, canvas { max-width: 100%; }
+img { height: auto; }
+input, select, textarea, button { max-width: 100%; font: inherit; }
+input, select, textarea { padding: .35rem .5rem; }
+button, input[type="submit"], input[type="reset"] {
+    padding: .4rem .75rem;
+    border: 1px solid #64748b;
+    border-radius: .35rem;
+    background: #eff6ff;
+    color: #172033;
+    cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover { background: #dbeafe; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+fieldset { margin-block: .75rem; padding: .8rem; border: 1px solid #94a3b8; border-radius: .4rem; }
+legend { padding-inline: .35rem; font-weight: 650; }
+.q-box { background: #fff; }
+.grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.card { border: 1px solid #cbd5e1; border-radius: .5rem; padding: 10px; width: 125px; background: #fff; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    iframe { width: 100%; }
+}</style></head>
+<body>
+<h1>Images and Gallery</h1>
+<!-- Resized and Aligned Image (Using inline SVG data URI so it works offline without broken links) -->
+<h2>1. Resized Image</h2>
+<img alt="Sample Banner" height="150" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='300' height='150'&gt;&lt;rect width='300' height='150' fill='%232b6cb0'/&gt;&lt;text x='50%' y='50%' fill='white' font-size='20' text-anchor='middle' dy='.3em'&gt;Sample Banner 300x150&lt;/text&gt;&lt;/svg&gt;" style="border: 2px solid currentColor;" width="300"/>
+<!-- Image used as a Hyperlink -->
+<h2>2. Image as a Hyperlink</h2>
+<a href="Task01_First_HTML_Page.html" title="Click image to visit Task 1">
+<img alt="Clickable Button Image" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='200' height='80'&gt;&lt;rect width='200' height='80' fill='%232f855a'/&gt;&lt;text x='50%' y='50%' fill='white' font-size='16' text-anchor='middle' dy='.3em'&gt;Click Me (Link)&lt;/text&gt;&lt;/svg&gt;"/>
+</a>
+<!-- Simple Image Gallery -->
+<h2>3. Mini Photo Gallery</h2>
+<div>
+<img alt="Photo 1" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'&gt;&lt;rect width='150' height='150' fill='%23dd6b20'/&gt;&lt;text x='50%' y='50%' fill='white' text-anchor='middle' dy='.3em'&gt;Photo 1&lt;/text&gt;&lt;/svg&gt;"/>
+<img alt="Photo 2" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'&gt;&lt;rect width='150' height='150' fill='%23805ad5'/&gt;&lt;text x='50%' y='50%' fill='white' text-anchor='middle' dy='.3em'&gt;Photo 2&lt;/text&gt;&lt;/svg&gt;"/>
+<img alt="Photo 3" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'&gt;&lt;rect width='150' height='150' fill='%23d53f8c'/&gt;&lt;text x='50%' y='50%' fill='white' text-anchor='middle' dy='.3em'&gt;Photo 3&lt;/text&gt;&lt;/svg&gt;"/>
+</div>
+</body>
+</html>

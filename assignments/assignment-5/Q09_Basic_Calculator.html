@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Q9 - JavaScript Calculator</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>/* Shared responsive defaults for a clean, accessible lab submission. */
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    color: #172033;
+    background: #f8fafc;
+}
+* { box-sizing: border-box; }
+body {
+    margin: clamp(1rem, 3vw, 2rem) auto;
+    padding: 0 clamp(.25rem, 1vw, .75rem);
+    max-width: 1100px;
+    background: #f8fafc;
+}
+h1, h2, h3, h4 { line-height: 1.25; color: #14213d; }
+h1 { margin-block: .5em .75em; }
+h2 { margin-block: .75em; }
+p { max-width: 78ch; }
+a { color: #1557a6; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+table {
+    width: auto;
+    max-width: 100%;
+    margin-block: 1rem;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    padding: .55rem .75rem;
+    border: 1px solid #94a3b8;
+    vertical-align: middle;
+}
+th { background: #eaf1fb; font-weight: 650; }
+caption { padding: .5rem; font-weight: 650; text-align: left; }
+img, video, iframe, canvas { max-width: 100%; }
+img { height: auto; }
+input, select, textarea, button { max-width: 100%; font: inherit; }
+input, select, textarea { padding: .35rem .5rem; }
+button, input[type="submit"], input[type="reset"] {
+    padding: .4rem .75rem;
+    border: 1px solid #64748b;
+    border-radius: .35rem;
+    background: #eff6ff;
+    color: #172033;
+    cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover { background: #dbeafe; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+fieldset { margin-block: .75rem; padding: .8rem; border: 1px solid #94a3b8; border-radius: .4rem; }
+legend { padding-inline: .35rem; font-weight: 650; }
+.q-box { background: #fff; }
+.grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.card { border: 1px solid #cbd5e1; border-radius: .5rem; padding: 10px; width: 125px; background: #fff; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    iframe { width: 100%; }
+}</style></head>
+<body>
+<h2>Basic Arithmetic Calculator</h2>
+<input aria-label="Calculator display" id="display" readonly="" style="width: 170px; font-size: 18px; text-align: right;" type="text"/><br/><br/>
+<div>
+<button data-value="7">7</button>
+<button data-value="8">8</button>
+<button data-value="9">9</button>
+<button data-value="/">/</button><br/>
+<button data-value="4">4</button>
+<button data-value="5">5</button>
+<button data-value="6">6</button>
+<button data-value="*">*</button><br/>
+<button data-value="1">1</button>
+<button data-value="2">2</button>
+<button data-value="3">3</button>
+<button data-value="-">-</button><br/>
+<button data-action="clear">C</button>
+<button data-value="0">0</button>
+<button data-action="calculate">=</button>
+<button data-value="+">+</button>
+</div>
+
+<script>
+const display = document.getElementById('display');
+const keypad = display.nextElementSibling.nextElementSibling;
+
+function appendValue(value) {
+    const operators = ['+', '-', '*', '/'];
+    const last = display.value.slice(-1);
+    if (operators.includes(value)) {
+        if (!display.value && value !== '-') return;
+        if (operators.includes(last)) {
+            display.value = display.value.slice(0, -1) + value;
+            return;
+        }
+    }
+    display.value += value;
+}
+
+// Parse and evaluate a restricted arithmetic expression without JavaScript eval.
+function evaluateArithmetic(expression) {
+    const tokens = expression.match(/\d+(?:\.\d+)?|[+*/-]/g);
+    if (!tokens || tokens.join('') !== expression || /[+*/-]$/.test(expression)) {
+        throw new Error('Invalid expression');
+    }
+    const values = [];
+    const operators = [];
+    const precedence = (operator) => (operator === '*' || operator === '/') ? 2 : 1;
+    const apply = () => {
+        const operator = operators.pop();
+        const right = values.pop();
+        const left = values.pop();
+        if (left === undefined || right === undefined) throw new Error('Invalid expression');
+        if (operator === '+') values.push(left + right);
+        else if (operator === '-') values.push(left - right);
+        else if (operator === '*') values.push(left * right);
+        else if (operator === '/') {
+            if (right === 0) throw new Error('Cannot divide by zero');
+            values.push(left / right);
+        }
+    };
+    let expectNumber = true;
+    for (const token of tokens) {
+        if (/^\d/.test(token)) {
+            if (!expectNumber) throw new Error('Invalid expression');
+            values.push(Number(token));
+            expectNumber = false;
+        } else {
+            if (expectNumber) throw new Error('Invalid expression');
+            while (operators.length && precedence(operators[operators.length - 1]) >= precedence(token)) apply();
+            operators.push(token);
+            expectNumber = true;
+        }
+    }
+    if (expectNumber) throw new Error('Invalid expression');
+    while (operators.length) apply();
+    if (values.length !== 1 || !Number.isFinite(values[0])) throw new Error('Invalid result');
+    return values[0];
+}
+
+keypad.addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    if (!button) return;
+    if (button.dataset.action === 'clear') {
+        display.value = '';
+    } else if (button.dataset.action === 'calculate') {
+        try {
+            display.value = String(evaluateArithmetic(display.value));
+        } catch (error) {
+            display.value = error.message === 'Cannot divide by zero' ? 'Error: divide by 0' : 'Error';
+        }
+    } else if (button.dataset.value !== undefined) {
+        appendValue(button.dataset.value);
+    }
+});
+</script></body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>HTML Assignment 3 - Intermediate Form Questions (Q1-Q20)</title>
+<style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .q-box { border: 1px solid #cbd5e0; padding: 14px; margin-bottom: 16px; border-radius: 6px; }
+        h3 { margin-top: 0; color: #2f855a; }
+
+/* Shared responsive defaults for a clean, accessible lab submission. */
+:root {
+    color-scheme: light;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    color: #172033;
+    background: #f8fafc;
+}
+* { box-sizing: border-box; }
+body {
+    margin: clamp(1rem, 3vw, 2rem) auto;
+    padding: 0 clamp(.25rem, 1vw, .75rem);
+    max-width: 1100px;
+    background: #f8fafc;
+}
+h1, h2, h3, h4 { line-height: 1.25; color: #14213d; }
+h1 { margin-block: .5em .75em; }
+h2 { margin-block: .75em; }
+p { max-width: 78ch; }
+a { color: #1557a6; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+table {
+    width: auto;
+    max-width: 100%;
+    margin-block: 1rem;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    padding: .55rem .75rem;
+    border: 1px solid #94a3b8;
+    vertical-align: middle;
+}
+th { background: #eaf1fb; font-weight: 650; }
+caption { padding: .5rem; font-weight: 650; text-align: left; }
+img, video, iframe, canvas { max-width: 100%; }
+img { height: auto; }
+input, select, textarea, button { max-width: 100%; font: inherit; }
+input, select, textarea { padding: .35rem .5rem; }
+button, input[type="submit"], input[type="reset"] {
+    padding: .4rem .75rem;
+    border: 1px solid #64748b;
+    border-radius: .35rem;
+    background: #eff6ff;
+    color: #172033;
+    cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover { background: #dbeafe; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+fieldset { margin-block: .75rem; padding: .8rem; border: 1px solid #94a3b8; border-radius: .4rem; }
+legend { padding-inline: .35rem; font-weight: 650; }
+.q-box { background: #fff; }
+.grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.card { border: 1px solid #cbd5e1; border-radius: .5rem; padding: 10px; width: 125px; background: #fff; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    iframe { width: 100%; }
+}</style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/></head>
+<body>
+<h1>HTML Assignment 3: Forms (Intermediate Questions 1 - 20)</h1>
+<!-- Q1: Login Form -->
+<div class="q-box">
+<h3>Q1. Login Form</h3>
+<form action="#">
+            Username: <input required="" type="text"/>
+            Password: <input required="" type="password"/>
+<button type="submit">Login</button>
+</form>
+</div>
+<!-- Q2: Contact Form -->
+<div class="q-box">
+<h3>Q2. Contact Form</h3>
+<form action="#">
+            Name: <input required="" type="text"/><br/>
+            Email: <input required="" type="email"/><br/>
+            Phone: <input required="" type="tel"/><br/>
+            Message: <textarea rows="2"></textarea><br/>
+<button type="submit">Send</button>
+</form>
+</div>
+<!-- Q3: Payment Method Radio Buttons -->
+<div class="q-box">
+<h3>Q3. Payment Method</h3>
+<form>
+<input name="pay" type="radio" value="Card"/> Credit Card
+            <input name="pay" type="radio" value="UPI"/> UPI
+            <input name="pay" type="radio" value="COD"/> Cash on Delivery
+        </form>
+</div>
+<!-- Q4: Multiple Languages Checkboxes -->
+<div class="q-box">
+<h3>Q4. Select Multiple Languages</h3>
+<form>
+<input name="lang" type="checkbox" value="English"/> English
+            <input name="lang" type="checkbox" value="Hindi"/> Hindi
+            <input name="lang" type="checkbox" value="French"/> French
+            <input name="lang" type="checkbox" value="Spanish"/> Spanish
+        </form>
+</div>
+<!-- Q5: Age Restricted 18-60 -->
+<div class="q-box">
+<h3>Q5. Age Restricted (18 - 60)</h3>
+<form action="#">
+            Age: <input max="60" min="18" required="" type="number"/>
+<input type="submit" value="Check"/>
+</form>
+</div>
+<!-- Q6: 10-Digit Phone Pattern Validation -->
+<div class="q-box">
+<h3>Q6. 10-Digit Phone Pattern Validation</h3>
+<form action="#">
+            Phone: <input pattern="[0-9]{10}" placeholder="9876543210" required="" title="Enter 10 digits" type="tel"/>
+<input type="submit" value="Validate"/>
+</form>
+</div>
+<!-- Q7: PDF Only File Upload -->
+<div class="q-box">
+<h3>Q7. PDF Only File Upload</h3>
+<form>
+            Upload Resume (PDF only): <input accept=".pdf,application/pdf" type="file"/>
+</form>
+</div>
+<!-- Q8: Profession Dropdown -->
+<div class="q-box">
+<h3>Q8. Profession Dropdown</h3>
+<form>
+            Profession:
+            <select name="profession">
+<option>Student</option>
+<option>Teacher</option>
+<option>Developer</option>
+<option>Designer</option>
+</select>
+</form>
+</div>
+<!-- Q9: Disable Submit Until Terms Checked -->
+<div class="q-box">
+<h3>Q9. Disable Submit Until Terms &amp; Conditions Checked</h3>
+<form>
+<input id="termsChk" type="checkbox"/>
+<label for="termsChk">I agree to Terms &amp; Conditions</label><br/>
+<button disabled="" id="termsBtn" type="submit">Submit</button>
+</form>
+</div>
+<!-- Q10: Fieldset & Legend for Address -->
+<div class="q-box">
+<h3>Q10. Address Details Fieldset</h3>
+<form>
+<fieldset>
+<legend>Address Details</legend>
+                Street: <input type="text"/><br/>
+                City: <input type="text"/><br/>
+                Pin Code: <input type="text"/>
+</fieldset>
+</form>
+</div>
+<!-- Q11: Email Format Validation -->
+<div class="q-box">
+<h3>Q11. Email Format Validation</h3>
+<form action="#">
+            Email: <input placeholder="abc@mail.com" required="" type="email"/>
+<input type="submit" value="Submit"/>
+</form>
+</div>
+<!-- Q12: Placeholder Attribute -->
+<div class="q-box">
+<h3>Q12. Placeholder Guidance</h3>
+<form>
+<input placeholder="e.g., John Doe" type="text"/>
+</form>
+</div>
+<!-- Q13: Password and Confirm Password -->
+<div class="q-box">
+<h3>Q13. Password &amp; Confirm Password</h3>
+<form id="confirmPasswordForm">
+            Password: <input id="p1" required="" type="password"/>
+            Confirm Password: <input id="p2" required="" type="password"/>
+<button type="submit">Verify</button>
+</form>
+</div>
+<!-- Q14: Reset Button Test -->
+<div class="q-box">
+<h3>Q14. Reset Button Test</h3>
+<form>
+            Field 1: <input type="text" value="Sample A"/>
+            Field 2: <input type="text" value="Sample B"/>
+<input type="reset" value="Clear All"/>
+</form>
+</div>
+<!-- Q15: Newsletter Signup -->
+<div class="q-box">
+<h3>Q15. Newsletter Signup Form</h3>
+<form action="#">
+            Name: <input placeholder="Your Name" required="" type="text"/>
+            Email: <input placeholder="Your Email" required="" type="email"/>
+<button type="submit">Subscribe</button>
+</form>
+</div>
+<!-- Q16: Disabled and Readonly Inputs -->
+<div class="q-box">
+<h3>Q16. Disabled vs Readonly Input</h3>
+<form>
+            Readonly (Submitted with form): <input readonly="" type="text" value="READONLY-101"/><br/>
+            Disabled (Cannot focus/submit): <input disabled="" type="text" value="DISABLED-999"/>
+</form>
+</div>
+<!-- Q17: Hidden Input Field -->
+<div class="q-box">
+<h3>Q17. Hidden Input Field</h3>
+<form>
+<input name="user_id" type="hidden" value="USR_7845"/>
+<span>Hidden User ID (<code>USR_7845</code>) is embedded inside this form.</span>
+</form>
+</div>
+<!-- Q18: Experience Rating Range (1-10) -->
+<div class="q-box">
+<h3>Q18. Experience Rating Range (1 to 10)</h3>
+<form>
+            Rating: <input id="experienceRange" max="10" min="1" type="range" value="7"/>
+<output id="rateOut">7</output>/10
+        </form>
+</div>
+<!-- Q19: Colour Picker Changing Background -->
+<div class="q-box" id="colorBox">
+<h3>Q19. Colour Picker for Background</h3>
+<form>
+            Pick Box Background Color:
+            <input id="colorPicker" type="color" value="#ffffff"/>
+</form>
+</div>
+<!-- Q20: Tel Input Type -->
+<div class="q-box">
+<h3>Q20. Tel Input Type</h3>
+<form>
+            Telephone: <input placeholder="+91-98765-43210" type="tel"/>
+</form>
+</div>
+<script>
+// Keep the terms button disabled until the checkbox is selected.
+const termsCheckbox = document.getElementById('termsChk');
+const termsButton = document.getElementById('termsBtn');
+termsCheckbox.addEventListener('change', () => { termsButton.disabled = !termsCheckbox.checked; });
+
+// Verify both password fields match before allowing the form to submit.
+document.getElementById('confirmPasswordForm').addEventListener('submit', (event) => {
+    const first = document.getElementById('p1').value;
+    const second = document.getElementById('p2').value;
+    if (first !== second) {
+        event.preventDefault();
+        alert('Passwords do not match!');
+    }
+});
+
+// Reflect the live range value beside the slider.
+const experienceRange = document.getElementById('experienceRange');
+const rangeOutput = document.getElementById('rateOut');
+experienceRange.addEventListener('input', () => { rangeOutput.value = experienceRange.value; });
+
+// Preview the selected color on its containing demonstration box.
+document.getElementById('colorPicker').addEventListener('input', (event) => {
+    document.getElementById('colorBox').style.backgroundColor = event.currentTarget.value;
+});
+</script></body>
+</html>
